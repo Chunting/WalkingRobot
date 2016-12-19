@@ -9,9 +9,11 @@ q2fd = X(3); 	% before dq1=X(3);
 %---------------------------------Robin modification-------------------------------- 
 Tf=X(4);
 
-global q20 q1f q2f q1m q2m L ti tm
+global q20 q1f q2f q1m q2m L ti tm;
 
+global Q;
 
+global Zf_p;
 
 %==============1. Trajectory Generation Parameters======================
 %---------------------1.1 initial and finial position 

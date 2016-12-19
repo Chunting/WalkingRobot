@@ -2,16 +2,17 @@ clear all
 clc
 
 %% 1. we define the initial point for optimization searching
-% [q10, dq10, dq20, T]
+% [q10, dq1f, dq2f, T]
 % q10 is the initial position for the joint 1;
-% dq10 and dq20 are the initial velocities for the joint 1 and 2.
+% dq1f and dq2f are the final velocities for the joint 1 and 2.
 % T means the transfer time.
-X = [1,1,1,1]; 
+X = [1,0.1,0.1, 5]; 
 
+global Tf
 Tf=X(4); % define Tf for the function being called
 
 %% 2. we define the robot parameters
-global theta m g q1f q2f q1m q2m d L ti tm I S Tf
+global theta m g q1f q2f q1m q2m d L ti tm I S
 
 % information about the environment
 I = 0.08;
@@ -35,9 +36,9 @@ q2m=0.5;  % joint 2 of  crossing intermediate configuration
 %% 3. we define the boundaries for the optimization parameters
 %decision vars
 % lower bound
-lb = [-2,-2,-2,0];
+lb = [-3,-3,-3,0];
 % upper bound
-ub = [2,2,2,100];
+ub = [3,3,3,100];
 
 %% 3. Run the optimization program
 % objective function is defined as objfun.m
