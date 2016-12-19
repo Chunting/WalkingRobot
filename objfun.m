@@ -3,8 +3,10 @@ function f = objfun( X )
 %==============0. Optimisation variables======================	
 % optimisation variables are q10, q1fd, q2fd, Tf
 q10=X(1);
-q1fd = X(2);   	%before dq2=X(2);
-q2fd = X(3); 	%before dq1=X(3);
+%--------------------------------- Robin modification-------------------------------- 
+q1fd = X(2);   	% before dq2=X(2);
+q2fd = X(3); 	% before dq1=X(3);
+%---------------------------------Robin modification-------------------------------- 
 Tf=X(4);
 
 global q20 q1f q2f q1m q2m L ti tm
@@ -62,9 +64,10 @@ ParamT=[ti^4,ti^3,ti^2,ti,1;%<---qi
        Tf^4,Tf^3,Tf^2,Tf,1;%<---qf
        4*Tf^3,3*Tf^2,2*Tf,1,0;%<----d_qf
        tm^4,tm^3,tm^2,tm,1];%<--- middle point
-   
-Param_q1=ParamT\[q10;q10d;q1f;0;q1m];
-Param_q2=ParamT\[q20;q20d;q2f;0;q2m];
+%--------------------------------- Robin modification--------------------------------    
+Param_q1=ParamT\[q10;q10d;q1f;q1fd;q1m]; % before Param_q1=ParamT\[q10;q10d;q1f;0;q1m]
+Param_q2=ParamT\[q20;q20d;q2f;q2fd;q2m]; % before Param_q2=ParamT\[q20;q20d;q2f;0;q2m]
+%--------------------------------- Robin modification-------------------------------- 
 
 % obtain trajectory 
 a0=Param_q1(1);a1=Param_q1(2);a2=Param_q1(3);a3=Param_q1(4);a4=Param_q1(5);
@@ -81,9 +84,6 @@ dq2=4*b0*t.^3+3*b1*t.^2+2*b2*t+b3;
 ddq2=12*b0*t.^2+6*b1*t+2*b2;
 
 Q=[q1.',q2.',dq1.',dq2.',ddq1.',ddq2.'];
-
-
-
 
 %=============================3. OBJECTIF==================================
 % the input is the Q=[q1.',q2.',dq1.',dq2.',ddq1.',ddq2.'] for the whole trajectory.
