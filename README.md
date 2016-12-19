@@ -5,22 +5,13 @@ The problem statement is given by the Texte_TP_optim.pdf
 # Codes introductions
 This codes provides a optimization method for a trajectory generation for a compass robot.
 
-The optimization variables are [q10, dq10, dq20, T]
-q10 is the initial position for the joint 1;
-dq10 and dq20 are the initial velocities for the joint 1 and 2.
-T means the transfer time.
-
-Parameters known.
-
-geometry information about the robot and environment
-global theta m g I S d L 
-
-expected trajectory coefficients
-global q1f q2f q1m q2m ti tm
-q1f and q2f are final velocities of the robot;
-ti is the beginning time
-q1m,  q2m and ti refer to the intermediate configuration and the corresponding time
+ 1. optimization variables are [q10, dq1f, dq2f, T]
+	q10 is the initial position for the joint 1;
+	dq1f and dq2f are the final velocities for the joint 1 and 2.
+	T means the transfer time.
+2. constrains is represented in constrain.m
+3. object is expressed in objfun.m.
 
 # How to run the program
-1. main program is developed in Opt.m
-2. 
+1. run the Opt.m (with X = [1,0.1,0.1, 5] by default)
+2. results including X and g_ineg are shown in Matlab.
