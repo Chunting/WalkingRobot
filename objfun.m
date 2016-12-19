@@ -28,10 +28,10 @@ q20=pi-2*q10;
 	% the joint velocities before impact
 	Zf = [q1f;q2f;q1fd;q2fd];
 
-	%---------------------------------
+	%---------------------------------Please check---------------------------------
 	xfd=-L*Zf(3)*cos(Zf(1));
 	yfd=-L*Zf(3)*sin(Zf(1));
-	%---------------------------------
+	%---------------------------------Please check---------------------------------
 
 	%(2) IMPACT MODEL
 	% complete the model
@@ -90,6 +90,6 @@ Q=[q1.',q2.',dq1.',dq2.',ddq1.',ddq2.'];
 % the output f is the transfer cost
 [f,~,~]=ss_passif(Q);
 
-
+X
 end
 
