@@ -35,9 +35,9 @@ q2m=0.5;  % joint 2 of  crossing intermediate configuration
 %% 3. we define the boundaries for the optimization parameters
 %decision vars
 % lower bound
-lb = [-2,-2,-2,0];
+lb = [-3,-3,-3,0];
 % upper bound
-ub = [2,2,2,100];
+ub = [3,3,3,100];
 
 %% 3. Run the optimization program
 % objective function is defined as objfun.m
