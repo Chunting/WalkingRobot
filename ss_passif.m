@@ -1,4 +1,5 @@
 function [J,R, T] = ss_passif( z )
+
  global theta Tf m g d;
 
 
@@ -11,7 +12,7 @@ function [J,R, T] = ss_passif( z )
  % initisation of torque matrix
  T = zeros(Ts,2);
  
- %Jm=zeros(Ts,1);
+ Jm=zeros(Ts,1);
  
  for i=1:Ts
      dq=[z(i,3);z(i,4)];

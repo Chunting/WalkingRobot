@@ -62,38 +62,6 @@ dq=[dq1,dq2];
 %==========OBJECTIF=====================================================
 [~,R,Torque]=ss_passif(Q);
 
-
-% % for constrains for arrqies, we only need to find the boundaries of them
-% % 1st constains is for d
-% g1 = 0.2 - d;
-% 
-% % 2nd constrains is for Ry
-% g2 =  -R(:,2);
-% 
-% % 3rd constrain is for I2y
-% g3= -Iy;
-% 
-% % 4th constrain for R
-% g4= abs(R(:,1)./R(:,2))-0.7;
-% 
-% % 5th constrain is for Ix Iy
-% g5= abs(Ix/Iy)-0.7;
-% 
-% % 6th constrain is for dq
-% % joint 1
-% g6= abs(dq(:,1))- 3;
-% % joint 2
-% g7= abs(dq(:,2))- 3;
-% 
-% %7th constrain is for torque
-% % for torque 1
-% g8= abs(Torque(:,1)) - 50;
-% % for torque 2
-% g9= abs(Torque(:,2)) - 50;
-% 
-% g10= -Iy;
-
-
 g1 = 0.2 - d;
 
 % 2nd constrains is for Ry
@@ -124,5 +92,6 @@ g9= max(abs(Torque(:,2))) - 50;
 g_ineq=[g1;g2;g3;g4;g5;g6;g7;g8;g9];
 
 geq=[];
+
 end
 
